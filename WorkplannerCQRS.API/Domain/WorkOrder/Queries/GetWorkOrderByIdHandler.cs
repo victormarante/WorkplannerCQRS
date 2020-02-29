@@ -31,8 +31,7 @@ namespace WorkplannerCQRS.API.Domain.WorkOrder.Queries
                 return new ApiResponse<WorkOrderResponse>($"Work order with id: '{request.ObjectNumber}' could not by found");
             }
             
-            var response = new ApiResponse<WorkOrderResponse>(workOrder);
-            return response;
+            return new ApiResponse<WorkOrderResponse>(workOrder);
         }
     }
 }

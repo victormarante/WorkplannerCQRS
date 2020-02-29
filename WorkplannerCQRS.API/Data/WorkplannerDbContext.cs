@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
 using WorkplannerCQRS.API.Domain;
+using WorkplannerCQRS.API.Domain.Worker;
 using WorkplannerCQRS.API.Domain.WorkOrder.Models;
 
 namespace WorkplannerCQRS.API.Data
@@ -22,6 +23,8 @@ namespace WorkplannerCQRS.API.Data
         }
 
         public DbSet<WorkOrder> WorkOrders { get; set; }
+
+        public DbSet<Worker> Workers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

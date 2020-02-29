@@ -28,12 +28,12 @@ namespace WorkplannerCQRS.API.Controllers
         /// <response code="204">Return NoContent if no records were found in the database</response>
         /// <returns>Response with all work orders</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(List<ApiResponse<WorkOrderResponse>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<List<WorkOrderResponse>>), 200)]
         [ProducesResponseType(204)]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllWorkOrdersQuery());
-            return result.Data.Any() ? (IActionResult) Ok(result) : NoContent();
+            return result.Data.Any() ? (IActionResult) Ok(result.Data) : NoContent();
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace WorkplannerCQRS.API.Controllers
         {
             var query = new GetWorkOrderByIdQuery(objectNumber);
             var result = await _mediator.Send(query);
-            return result == null ? (IActionResult) NotFound() : Ok(result);
+            return result.Success ? (IActionResult) Ok(result.Data) : NotFound();
         }
 
         /// <summary>

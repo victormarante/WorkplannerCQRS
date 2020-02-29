@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorkplannerCQRS.API.Data;
 
 namespace WorkplannerCQRS.API.Migrations
 {
     [DbContext(typeof(WorkplannerDbContext))]
-    partial class WorkplannerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200229133621_AddWorkerEntity")]
+    partial class AddWorkerEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

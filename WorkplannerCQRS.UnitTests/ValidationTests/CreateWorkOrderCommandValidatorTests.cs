@@ -7,6 +7,8 @@ using Xunit;
 
 namespace WorkplannerCQRS.UnitTests.ValidationTests
 {
+    // TODO: Move each set of tests (i.e. name valid values tests) to own class
+    // Motive: Not have both error and non-error values in same test
     public class CreateWorkOrderCommandValidatorTests
     {
         

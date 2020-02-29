@@ -111,8 +111,17 @@ namespace WorkplannerCQRS.IntegrationTests.Setup
             });
         }
 
-        public static Task<T> FindAsync<T>(string id)
-            where T : class
+        public static Task<T> FindAsync<T>(string id) where T : class 
+        {
+            return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(id).AsTask());
+        }
+        
+        public static Task<T> FindAsync<T>(Guid id) where T : class
+        {
+            return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(id).AsTask());
+        }
+        
+        public static Task<T> FindAsync<T>(int id) where T : class 
         {
             return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(id).AsTask());
         }
