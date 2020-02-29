@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkplannerCQRS.API", "WorkplannerCQRS.API\WorkplannerCQRS.API.csproj", "{FB64A996-20FB-474B-8667-1BFA0765FC34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkplannerCQRS.IntegrationTests", "WorkplannerCQRS.IntegrationTests\WorkplannerCQRS.IntegrationTests.csproj", "{368D648E-5122-442A-9DB1-5035D09639B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkplannerCQRS.UnitTests", "WorkplannerCQRS.UnitTests\WorkplannerCQRS.UnitTests.csproj", "{A02D19B3-F9A8-4FCB-A158-21DF9E291F6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB64A996-20FB-474B-8667-1BFA0765FC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB64A996-20FB-474B-8667-1BFA0765FC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB64A996-20FB-474B-8667-1BFA0765FC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB64A996-20FB-474B-8667-1BFA0765FC34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368D648E-5122-442A-9DB1-5035D09639B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368D648E-5122-442A-9DB1-5035D09639B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368D648E-5122-442A-9DB1-5035D09639B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368D648E-5122-442A-9DB1-5035D09639B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A02D19B3-F9A8-4FCB-A158-21DF9E291F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02D19B3-F9A8-4FCB-A158-21DF9E291F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02D19B3-F9A8-4FCB-A158-21DF9E291F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02D19B3-F9A8-4FCB-A158-21DF9E291F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
