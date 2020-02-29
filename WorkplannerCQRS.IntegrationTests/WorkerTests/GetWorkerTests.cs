@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Shouldly;
 using WorkplannerCQRS.API.Domain.Worker;
+using WorkplannerCQRS.API.Domain.Worker.Models;
 using WorkplannerCQRS.API.Domain.Worker.Queries;
 using WorkplannerCQRS.IntegrationTests.Setup;
 using Xunit;

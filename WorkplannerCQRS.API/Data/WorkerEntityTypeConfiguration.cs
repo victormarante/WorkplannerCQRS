@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WorkplannerCQRS.API.Domain.Worker;
+using WorkplannerCQRS.API.Domain.Worker.Models;
 
 namespace WorkplannerCQRS.API.Data
 {

@@ -1,5 +1,7 @@
+using System.Drawing;
 using MediatR;
 using WorkplannerCQRS.API.Domain.Worker.DTOs;
+using WorkplannerCQRS.API.Domain.WorkOrder.DTOs;
 
 namespace WorkplannerCQRS.API.Domain.Worker.Commands
 {

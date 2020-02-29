@@ -33,10 +33,15 @@ namespace WorkplannerCQRS.IntegrationTests.WorkOrderTests
             var query = new GetWorkOrderByIdQuery(workOrder.ObjectNumber);
             
             // Act
+            var getBeforeDeletion = await SendRequestAsync(query);
             var deleteCommandResult = await SendRequestAsync(deleteWorkOrderCommand);
             var getQueryResult = await SendRequestAsync(query);
             
             // Assert
+            // Asserting before delete command
+            getBeforeDeletion.Success.ShouldBeTrue();
+            deleteCommandResult.Data.ShouldNotBeNull();
+            deleteCommandResult.Message.ShouldBeNullOrEmpty();
             
             // Asserting delete command
             deleteCommandResult.Success.ShouldBeTrue();

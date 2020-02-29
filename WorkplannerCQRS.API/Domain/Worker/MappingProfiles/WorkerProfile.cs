@@ -8,15 +8,21 @@ namespace WorkplannerCQRS.API.Domain.Worker.MappingProfiles
     {
         public WorkerProfile()
         {
-            CreateMap<CreateWorkerCommand, Worker>()
+            CreateMap<CreateWorkerCommand, Models.Worker>()
                 .ForMember(x => x.Id, opt => opt.Ignore())
                 .ForMember(x => x.CreatedAt, opt => opt.Ignore())
                 .ForMember(x => x.ModifiedAt, opt => opt.Ignore());
             
-            CreateMap<Worker, WorkerResponse>()
+            CreateMap<UpdateWorkerCommand, Models.Worker>()
+                .ForMember(x => x.Id, opt => opt.Ignore())
+                .ForMember(x => x.CreatedAt, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedAt, opt => opt.Ignore());
+            
+            CreateMap<Models.Worker, WorkerResponse>()
                 .ForSourceMember(x => x.Id, opt => opt.DoNotValidate())
                 .ForSourceMember(x => x.CreatedAt, opt => opt.DoNotValidate())
-                .ForSourceMember(x => x.ModifiedAt, opt => opt.DoNotValidate());
+                .ForSourceMember(x => x.ModifiedAt, opt => opt.DoNotValidate())
+                .ReverseMap();
         }
     }
 }

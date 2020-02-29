@@ -44,12 +44,13 @@ namespace WorkplannerCQRS.IntegrationTests.WorkOrderTests
             // Assert
             result.Success.ShouldBeTrue();
             result.Message.ShouldBeEmpty();
-            result.Data.ObjectNumber.ShouldBe(workOrder.ObjectNumber);
-            result.Data.Address.ShouldBe(workOrder.Address);
-            result.Data.Description.ShouldBe(workOrder.Description);
-            result.Data.StartDate.ShouldBe(workOrder.StartDate);
-            result.Data.EndDate.ShouldBe(workOrder.EndDate);
-            result.Data.Status.ShouldBe(workOrder.Status);
+            
+            workOrder.ObjectNumber.ShouldBe(updateWorkOrderCommand.ObjectNumber);
+            workOrder.Address.ShouldBe(updateWorkOrderCommand.Address);
+            workOrder.Description.ShouldBe(updateWorkOrderCommand.Description);
+            workOrder.StartDate.ShouldBe(updateWorkOrderCommand.StartDate);
+            workOrder.EndDate.ShouldBe(updateWorkOrderCommand.EndDate);
+            workOrder.Status.ShouldBe(updateWorkOrderCommand.Status);
         }
     }
 }

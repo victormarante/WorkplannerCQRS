@@ -1,6 +1,4 @@
-using System;
-
-namespace WorkplannerCQRS.API.Domain.Worker
+namespace WorkplannerCQRS.API.Domain.Worker.Models
 {
     public class Worker : BaseEntity
     {

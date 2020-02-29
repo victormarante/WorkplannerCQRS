@@ -27,7 +27,7 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Response for the request</returns>
         /// <response code="201">Returns the location of the newly created worker</response>
         /// <response code="400">Return data containing information about why has the request failed</response>
-        [HttpPost]
+        [HttpPost(Name = "CreateWorker")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         public async Task<IActionResult> Post([FromBody]CreateWorkerCommand command)
@@ -43,7 +43,7 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns worker with given id, or 404 if not found</returns>
         /// <response code="200">Returns worker with the given object number</response>
         /// <response code="404">Returns NotFound http status code</response>
-        [HttpGet]
+        [HttpGet(Name = "GetWorkerById")]
         [Route("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
@@ -52,13 +52,56 @@ namespace WorkplannerCQRS.API.Controllers
             return result.Success ? (IActionResult) Ok(result.Data) : NotFound();
         }
 
-        [HttpGet]
+        /// <summary>
+        /// GetAll gets all workers
+        /// </summary>
+        /// <returns>Returns all workers from database, or returns 204 NoContent if none was found</returns>
+        /// <response code="200">Return workers from database</response>
+        /// <response code="204">Return NoContent if no workers were found</response>
+        [HttpGet(Name = "GetAllWorkers")]
         [ProducesResponseType(typeof(ApiResponse<List<WorkerResponse>>), 200)]
         [ProducesResponseType(204)]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllWorkersQuery());
             return result.Data.Any() ? (IActionResult) Ok(result) : NoContent();
+        }
+
+        /// <summary>
+        /// Update updates worker
+        /// </summary>
+        /// <param name="id">Id of worker entity</param>
+        /// <param name="command">Update command for the worker entity</param>
+        /// <returns>Returns updated worker entity response</returns>
+        /// <response code="200">Returns updated worker entity response</response>
+        /// <response code="404">Returns 404 NotFound if worker with given id cannot be found</response>
+        [HttpPut(Name = "UpdateWorker")]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(ApiResponse<WorkerResponse>), 200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateWorkerCommand command)
+        {
+            command.WorkerId = id; 
+            var result = await _mediator.Send(command);
+            return result.Success ? (IActionResult) Ok(result) : NotFound();
+        }
+        
+        /// <summary>
+        /// Update updates worker
+        /// </summary>
+        /// <param name="id">Id of worker entity</param>
+        /// <returns>Returns updated worker entity response</returns>
+        /// <response code="200">Returns updated worker entity response</response>
+        /// <response code="404">Returns 404 NotFound if worker with given id cannot be found</response>
+        [HttpDelete(Name = "DeleteWorker")]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(ApiResponse<WorkerResponse>), 200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> Update([FromRoute] int id)
+        {
+            var command = new DeleteWorkerCommand(id);
+            var result = await _mediator.Send(command);
+            return result.Success ? (IActionResult) Ok(result) : NotFound();
         }
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
 using WorkplannerCQRS.API.Domain;
 using WorkplannerCQRS.API.Domain.Worker;
+using WorkplannerCQRS.API.Domain.Worker.Models;
 using WorkplannerCQRS.API.Domain.WorkOrder.Models;
 
 namespace WorkplannerCQRS.API.Data
