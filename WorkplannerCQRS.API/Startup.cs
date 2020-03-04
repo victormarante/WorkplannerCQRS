@@ -48,10 +48,11 @@ namespace WorkplannerCQRS.API
                 app.UseDeveloperExceptionPage();
 
                 // only run migrations in development mode
+                /*
                 using var scope = app.ApplicationServices.CreateScope();
                 var db = scope.ServiceProvider.GetRequiredService<WorkplannerDbContext>();
                 db.Database.Migrate();
-                
+                */
                 mapper.ConfigurationProvider.AssertConfigurationIsValid();
             }
 

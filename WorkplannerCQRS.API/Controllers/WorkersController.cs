@@ -43,8 +43,9 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns worker with given id, or 404 if not found</returns>
         /// <response code="200">Returns worker with the given object number</response>
         /// <response code="404">Returns NotFound http status code</response>
-        [HttpGet(Name = "GetWorkerById")]
-        [Route("{id}")]
+        [HttpGet("{id:int}", Name = "GetWorkerById")]
+        [ProducesResponseType(typeof(ApiResponse<WorkerResponse>), 200)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var query = new GetWorkerByIdQuery(id);
@@ -75,8 +76,7 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns updated worker entity response</returns>
         /// <response code="200">Returns updated worker entity response</response>
         /// <response code="404">Returns 404 NotFound if worker with given id cannot be found</response>
-        [HttpPut(Name = "UpdateWorker")]
-        [Route("{id}")]
+        [HttpPut("{id:int}", Name = "UpdateWorker")]
         [ProducesResponseType(typeof(ApiResponse<WorkerResponse>), 200)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateWorkerCommand command)
@@ -93,8 +93,7 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns updated worker entity response</returns>
         /// <response code="200">Returns updated worker entity response</response>
         /// <response code="404">Returns 404 NotFound if worker with given id cannot be found</response>
-        [HttpDelete(Name = "DeleteWorker")]
-        [Route("{id}")]
+        [HttpDelete("{id:int}", Name = "DeleteWorker")]
         [ProducesResponseType(typeof(ApiResponse<WorkerResponse>), 200)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Update([FromRoute] int id)

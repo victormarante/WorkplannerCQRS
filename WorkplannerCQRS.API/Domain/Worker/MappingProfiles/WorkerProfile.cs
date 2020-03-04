@@ -9,6 +9,7 @@ namespace WorkplannerCQRS.API.Domain.Worker.MappingProfiles
         public WorkerProfile()
         {
             CreateMap<CreateWorkerCommand, Models.Worker>()
+                .ForMember(x => x.WorkerId, opt => opt.Ignore())
                 .ForMember(x => x.Id, opt => opt.Ignore())
                 .ForMember(x => x.CreatedAt, opt => opt.Ignore())
                 .ForMember(x => x.ModifiedAt, opt => opt.Ignore());

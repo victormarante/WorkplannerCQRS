@@ -10,13 +10,11 @@ using WorkplannerCQRS.API.Domain.WorkOrder.Queries;
 
 namespace WorkplannerCQRS.API.Controllers
 {
-    [ApiController]
-    [Route("/api/[controller]")]
-    public class WorkOrderController : ApiBaseController
+    public class WorkOrdersController : ApiBaseController
     {
         private readonly IMediator _mediator;
         
-        public WorkOrderController(IMediator mediator)
+        public WorkOrdersController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -59,13 +57,12 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns work order with given object number, or 404 if not found</returns>
         /// <response code="200">Returns work order with the given object number</response>
         /// <response code="404">Returns NotFound http status code</response>
-        [HttpGet(Name = "GetWorkOrderByObjectNumber")]
-        [Route("{objectNumber}")]
+        [HttpGet("{id}", Name = "GetWorkOrderByObjectNumber")]
         [ProducesResponseType(typeof(ApiResponse<WorkOrderResponse>), 200)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> GetByObjectNumber(string objectNumber)
+        public async Task<IActionResult> GetByObjectNumber(string id)
         {
-            var query = new GetWorkOrderByIdQuery(objectNumber);
+            var query = new GetWorkOrderByIdQuery(id);
             var result = await _mediator.Send(query);
             return result.Success ? (IActionResult) Ok(result.Data) : NotFound();
         }
@@ -78,8 +75,7 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns updated worker entity response</returns>
         /// <response code="200">Returns updated work order entity response</response>
         /// <response code="404">Returns 404 NotFound if work order with given id cannot be found</response>
-        [HttpPut(Name = "UpdateWorkOrder")]
-        [Route("{id}")]
+        [HttpPut("{id}", Name = "UpdateWorkOrder")]
         [ProducesResponseType(typeof(ApiResponse<WorkOrderResponse>), 200)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateWorkOrderCommand command)
@@ -96,8 +92,7 @@ namespace WorkplannerCQRS.API.Controllers
         /// <returns>Returns updated work order entity response</returns>
         /// <response code="200">Returns updated work order entity response</response>
         /// <response code="404">Returns 404 NotFound if work order with given id cannot be found</response>
-        [HttpDelete(Name = "DeleteWorkOrder")]
-        [Route("{id}")]
+        [HttpDelete("{id}", Name = "DeleteWorkOrder")]
         [ProducesResponseType(typeof(ApiResponse<WorkOrderResponse>), 200)]
         [ProducesResponseType(404)]
         public async Task<IActionResult> Update([FromRoute] string id)
