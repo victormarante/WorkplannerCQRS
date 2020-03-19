@@ -101,5 +101,12 @@ namespace WorkplannerCQRS.API.Controllers
             var result = await _mediator.Send(command);
             return result.Success ? (IActionResult) Ok(result) : NotFound();
         }
+
+        public async Task<IActionResult> AddWorkHours([FromRoute] string id, [FromBody] AddWorkHoursCommand command)
+        {
+            command.ObjectNumber = id;
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

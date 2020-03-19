@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using WorkplannerCQRS.API.Domain.WorkOrder.Enums;
 
 namespace WorkplannerCQRS.API.Domain.WorkOrder.Models
@@ -16,5 +17,7 @@ namespace WorkplannerCQRS.API.Domain.WorkOrder.Models
         public DateTimeOffset? EndDate { get; set; }
 
         public WorkOrderStatus Status { get; set; }
+
+        public ICollection<WorkOrderWorker.Models.WorkOrderWorker> WorkOrderWorkers { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace WorkplannerCQRS.IntegrationTests.Setup
         }
 
         /// <summary>
-        /// ResetCheckpoint reset the database state. I.E. removing all data from tables
+        /// ResetCheckpoint resets the database to last known state before tests were run
         /// </summary>
         public static Task ResetCheckpoint() => _checkPoint.Reset(_configuration.GetConnectionString("WorkplannerDb"));
 
@@ -111,11 +111,12 @@ namespace WorkplannerCQRS.IntegrationTests.Setup
             });
         }
 
-        public static Task<T> FindAsync<T>(string id) where T : class 
+        public static Task<T> FindAsync<T>(params object[] ids) where T : class 
         {
-            return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(id).AsTask());
+            return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(ids).AsTask());
         }
         
+        /*
         public static Task<T> FindAsync<T>(Guid id) where T : class
         {
             return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(id).AsTask());
@@ -125,6 +126,7 @@ namespace WorkplannerCQRS.IntegrationTests.Setup
         {
             return ExecuteDbContextAsync(db => db.Set<T>().FindAsync(id).AsTask());
         }
+        */
 
         public static Task SendRequestAsync(IRequest request)
         {

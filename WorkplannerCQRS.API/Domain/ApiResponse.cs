@@ -4,11 +4,11 @@ namespace WorkplannerCQRS.API.Domain
 {
     public class ApiResponse<T>
     {
-        public bool Success { get; protected set; }
+        public bool Success { get; private set; }
 
-        public string Message { get; protected set; }
+        public string Message { get; private set; }
 
-        public T Data { get; protected set; }
+        public T Data { get; private set; }
 
         public ApiResponse(bool success, string message, T data)
         {

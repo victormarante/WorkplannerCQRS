@@ -11,6 +11,7 @@ using WorkplannerCQRS.API.Domain;
 using WorkplannerCQRS.API.Domain.Worker;
 using WorkplannerCQRS.API.Domain.Worker.Models;
 using WorkplannerCQRS.API.Domain.WorkOrder.Models;
+using WorkplannerCQRS.API.Domain.WorkOrderWorker.Models;
 
 namespace WorkplannerCQRS.API.Data
 {
@@ -26,6 +27,8 @@ namespace WorkplannerCQRS.API.Data
         public DbSet<WorkOrder> WorkOrders { get; set; }
 
         public DbSet<Worker> Workers { get; set; }
+
+        public DbSet<WorkOrderWorker> WorkOrderWorkers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

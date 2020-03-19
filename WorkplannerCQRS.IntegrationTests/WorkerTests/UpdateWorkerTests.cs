@@ -28,7 +28,7 @@ namespace WorkplannerCQRS.IntegrationTests.WorkerTests
             // Act
             var updateWorkerCommand = new UpdateWorkerCommand(
                 createWorkerCommandResult.Data.WorkerId,
-                "Updted name",
+                "Updated name",
                 "Updated Email",
                 "Updated PhoneNumber");
 

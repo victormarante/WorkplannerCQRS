@@ -12,7 +12,7 @@ namespace WorkplannerCQRS.API.Data
         {
             builder.HasKey(x => x.ObjectNumber);
             builder.Property(x => x.Id);
-            
+
             builder.ToTable(nameof(WorkOrder));
         }
     }

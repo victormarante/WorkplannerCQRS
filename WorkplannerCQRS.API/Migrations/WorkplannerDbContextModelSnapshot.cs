@@ -53,6 +53,27 @@ namespace WorkplannerCQRS.API.Migrations
                     b.ToTable("WorkOrder");
                 });
 
+            modelBuilder.Entity("WorkplannerCQRS.API.Domain.WorkOrderWorker.Models.WorkOrderWorker", b =>
+                {
+                    b.Property<string>("ObjectNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WorkerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HoursWorked")
+                        .HasColumnType("int");
+
+                    b.HasKey("ObjectNumber", "WorkerId");
+
+                    b.HasIndex("WorkerId");
+
+                    b.ToTable("WorkOrderWorkers");
+                });
+
             modelBuilder.Entity("WorkplannerCQRS.API.Domain.Worker.Models.Worker", b =>
                 {
                     b.Property<int>("WorkerId")
@@ -81,6 +102,21 @@ namespace WorkplannerCQRS.API.Migrations
                     b.HasKey("WorkerId");
 
                     b.ToTable("Worker");
+                });
+
+            modelBuilder.Entity("WorkplannerCQRS.API.Domain.WorkOrderWorker.Models.WorkOrderWorker", b =>
+                {
+                    b.HasOne("WorkplannerCQRS.API.Domain.WorkOrder.Models.WorkOrder", "WorkOrder")
+                        .WithMany("WorkOrderWorkers")
+                        .HasForeignKey("ObjectNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WorkplannerCQRS.API.Domain.Worker.Models.Worker", "Worker")
+                        .WithMany("WorkOrderWorkers")
+                        .HasForeignKey("WorkerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
